@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>考研教室管理后台系统</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/X-admin/css/font.css">
+	<link rel="stylesheet" href="/static/X-admin/css/xadmin.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
+    <script src="/static/X-admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/X-admin/js/xadmin.js"></script>
+
+</head>
+<body>
+    <!-- 顶部开始 -->
+    <div class="container">
+        <div class="logo"><a href="index">系统主页</a></div>
+        <div class="open-nav"><i class="iconfont">&#xe699;</i></div>
+        <ul class="layui-nav right" lay-filter="">
+          <li class="layui-nav-item">
+            <a href="javascript:;">{$username}</a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+              <dd><a href="secret">修改密码</a></dd>
+              <dd><a href="logout">退出</a></dd>
+            </dl>
+          </li>
+        </ul>
+    </div>
+    <!-- 顶部结束 -->
+    
+    <!-- 中部开始 -->
+    <div class="wrapper">
+        <!-- 左侧菜单开始 -->
+       {include file="adminmenu/index" /}
+        <!-- 左侧菜单结束 -->
+        
+        <!-- 右侧主体开始 -->
+        <div class="page-content">
+          <div class="content">
+            <blockquote class="layui-elem-quote">
+                欢迎使用考研教室管理后台系统<span class="f-14">v2.0</span>！
+            </blockquote>
+            <fieldset class="layui-elem-field layui-field-title site-title">
+              <legend><a name="default">教室管理</a></legend>
+            </fieldset>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>楼号</th>
+                        <th>楼层</th>
+                        <th>教室号</th>
+                        <th>座位数</th>
+                        <th>已分配座位数</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {volist name="lists" id ="vo"}
+                    <tr>
+                        <td>{$vo.building}</td>
+                        <td>{$vo.floor}</td>
+                        <td>{$vo.room}</td>
+                        <td>{$vo.seats}</td>
+                        <td>{$vo.allocated}</td>
+                        <td><a href='classroom_delete?id={$vo.room}'>收回</a>
+                            <a href='classroom_change?id={$vo.room}'>修改</a> </td>
+                    </tr>
+                {/volist}
+                    <tr>
+                        <td><A href="classroom_add" target="_top">新增教室</A></td><td></td><td></td><td></td><td></td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- 右侧主体结束 -->
+    </div>
+    <!-- 中部结束 -->
+    
+    <!-- 底部开始 -->
+    <div class="footer">
+        <div class="copyright">
+            陈泓任 2001210194
+        </div>  
+    </div>
+    <!-- 底部结束 -->
+    
+    <!-- 背景切换开始 -->
+	<div class="bg-changer">
+        <div class="swiper-container changer-list">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img class="item" src="/static/X-admin/images/a.jpg" alt=""></div>
+                <div class="swiper-slide"><img class="item" src="/static/X-admin/images/b.jpg" alt=""></div>
+                <div class="swiper-slide"><img class="item" src="/static/X-admin/images/c.jpg" alt=""></div>
+                <div class="swiper-slide"><img class="item" src="/static/X-admin/images/d.jpg" alt=""></div>
+                <div class="swiper-slide"><img class="item" src="/static/X-admin/images/e.jpg" alt=""></div>
+                <div class="swiper-slide"><img class="item" src="/static/X-admin/images/f.jpg" alt=""></div>
+                <div class="swiper-slide"><img class="item" src="/static/X-admin/images/g.jpg" alt=""></div>
+                <div class="swiper-slide"><img class="item" src="/static/X-admin/images/h.jpg" alt=""></div>
+                <div class="swiper-slide"><img class="item" src="/static/X-admin/images/i.jpg" alt=""></div>
+                <div class="swiper-slide"><img class="item" src="/static/X-admin/images/j.jpg" alt=""></div>
+                <div class="swiper-slide"><img class="item" src="/static/X-admin/images/k.jpg" alt=""></div>
+                <div class="swiper-slide"><span class="reset">初始化</span></div>
+            </div>
+        </div>
+        <div class="bg-out"></div>
+        <div id="changer-set"><i class="iconfont">&#xe696;</i></div>   
+    </div>
+    <!-- 背景切换结束 -->
+</body>
+</html>
